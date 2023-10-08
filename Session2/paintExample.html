@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas painting Example</title>
+  </head>
+  <body>
+    <canvas
+      style="background-color: black"
+      id="canvas"
+      width="300"
+      height="300">
+    </canvas>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.addEventListener("mousemove", (event) => {
+      console.log("Mouse all the way");
+      console.log(event.clientX);
+      //Box
+      context.beginPath();
+      context.fillStyle = "red";
+      context.arc(event.clientX, event.clientY, 5, 5, 360);
+      context.fill();
+    });
+  </script>
+</html>

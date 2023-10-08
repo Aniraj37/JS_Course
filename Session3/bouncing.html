@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Loop alternative</title>
+  </head>
+  <body>
+    <center>
+      <canvas
+        id="canvas"
+        width="600"
+        height="500"
+        style="background-color: gray; margin-top: 10%">
+      </canvas>
+    </center>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+
+    const c = canvas.getContext("2d");
+
+    // The alternative way
+
+    // -- x & y are the coordinates of the circle ---
+
+    // -- vy & vx are the respective speeds ---
+
+    let x = Math.floor(Math.random() * 600);
+    let y = Math.floor(Math.random() * 500);
+    const speed = 2; // Set the constant speed of the ball
+    let angle = Math.random() * 2 * Math.PI; // Random initial angle
+    let radius = 20;
+
+    function renderBox() {
+      c.beginPath();
+      c.strokeStyle = "purple";
+      c.arc(x, y, radius, 0, Math.PI * 2, false);
+      c.stroke();
+
+      // Calculate the speed and angle
+      x += speed * Math.cos(angle);
+      y += speed * Math.cos(angle);
+
+      // Wrap the ball to the opposite edge if it goes out of the canvas
+
+      if (radius - x > 600) {
+        x = -radius;
+      }
+      if (x + radius < 0) {
+        x = 600 + radius;
+      }
+      if (y - radius > 500) {
+        y = -radius;
+      }
+      if (y + radius < 0) {
+        y = 500 + radius;
+      }
+    }
+
+    // Random
+
+    canvas.addEventListener("mousemove", (event) => {
+      function update() {
+        c.clearRect(0, 0, 600, 500);
+        renderBox();
+
+        window.requestAnimationFrame(update);
+      }
+      update();
+    });
+
+    // This one way of animating or running
+  </script>
+</html>

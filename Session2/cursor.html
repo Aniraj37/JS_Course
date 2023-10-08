@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cursor</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="canvas"> </canvas>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    canvas.addEventListener("mousemove", (event) => {
+      if (
+        event.clientX >= 0 &&
+        event.clientY <= canvas.width &&
+        event.clientY >= 0 &&
+        event.clientY <= canvas.height
+      ) {
+        // -- clearing the movemnet right away --
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        context.beginPath();
+        context.fillStyle = "yellow";
+        context.arc(event.clientX, event.clientY, 10, 15, 360);
+        context.fill();
+      } else {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    });
+  </script>
+</html>

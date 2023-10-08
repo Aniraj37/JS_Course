@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moving the box</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300" style="background-color: red">
+    </canvas>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+
+    const c = canvas.getContext("2d");
+
+    let x = 0;
+    let y = 0;
+
+    let direction = -1;
+    // This is the game loop
+    setInterval(() => {
+      c.clearRect(0, 0, 300, 300);
+
+      c.beginPath();
+      c.fillStyle = "yellow";
+      c.rect(x, 0, 50, 50);
+      c.fill();
+      // Update the position based on the direction
+      x += direction * 10;
+
+      // Check if the rectangle reached the canvas edges
+      if (x >= canvas.width - 50 || x <= 0) {
+        // Reverse the direction when reaching the edges
+        direction *= -1;
+      }
+    }, 100000 / 60); // Running it at 60 fps
+
+    // This one way of animating or running
+  </script>
+</html>

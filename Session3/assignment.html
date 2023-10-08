@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Loop alternative</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="300" height="300" style="background-color: red">
+    </canvas>
+  </body>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+
+    const c = canvas.getContext("2d");
+
+    // The alternative way
+
+    // let x = 0;
+    let y = 0;
+
+    function renderBox() {
+      c.beginPath();
+      c.fillStyle = "yellow";
+      c.rect(0, y, 50, 50);
+      c.fill();
+      //   x += 1;
+      y += 1;
+
+      c.beginPath();
+      c.fillStyle = "yellow";
+      c.rect(50, y, 50, 50);
+      c.fill();
+      //   x += 1;
+      y += 1;
+    }
+
+    // Random
+
+    canvas.addEventListener("mousemove", (event) => {
+      function update() {
+        c.clearRect(0, 0, 300, 300);
+        renderBox();
+
+        window.requestAnimationFrame(update);
+      }
+      update();
+    });
+
+    // This one way of animating or running
+  </script>
+</html>
