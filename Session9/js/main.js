@@ -11,11 +11,9 @@ const bg2 = new Background(bg.size.width, 0);
 
 //!! --- tracking game score ---
 let gameScore = 0;
-
 const interval_id = setInterval(() => {
     gameScore++;
 }, 1000)
-
 
 
 //!! --- Game Loop and logic ---
@@ -29,7 +27,6 @@ function animate() {
     console.log(bird.isDead);
 
 
-
     console.log("Working");
     bird.update();
 
@@ -40,22 +37,19 @@ function animate() {
     c.font = "30px sans serif";
     c.fillText(gameScore, 10, 20);
 
+
     //!! --- stop the score counting if bird is dead ---
     if (bird.isDead) {
         clearInterval(interval_id);
-
     }
+
 
     requestAnimationFrame(animate); //60
 }
 
 
-
-
-
 //!! --- Using space to make bird jump ---
 document.addEventListener("keydown", (event) => {
-
 
     if (event.code === "Space") {
         console.log("jump");
@@ -64,7 +58,7 @@ document.addEventListener("keydown", (event) => {
 
         //!! --- Making bird flap its wings only if it is not dead ---
         if (!bird.isDead) {
-
+            bird.bounce_sound();
             bird.change_images();
         }
     }

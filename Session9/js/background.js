@@ -12,6 +12,7 @@ class Background {
             height: canvas.height,
         };
 
+
         //!! --- velocity and acceleration ---
         this.velocity = {
             x: -1,
@@ -19,10 +20,12 @@ class Background {
         };
 
 
+
         //!! --- loading background image ---
         this.image = new Image();
         this.image.src = "../../Session9/image/bg_night.png";
     }
+
 
     //!! --- creating a background image ---
     draw() {
@@ -37,22 +40,23 @@ class Background {
             this.size.height);
     }
 
+
     //!! --- move screen go left ---
     move_background_to_left() {
         if (this.position.x + this.size.width <= 0) {
             this.position.x = this.size.width;
         }
         this.position.x += this.velocity.x;
-
     }
+
 
     //!! --- calling above methods ---
     update(isDead) {
         this.draw();
 
+
         //!! --- move screen left until bird is alive ---
         if (!isDead) {
-
             this.move_background_to_left();
         }
     }

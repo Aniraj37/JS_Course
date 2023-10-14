@@ -1,6 +1,6 @@
 class Bird {
-    constructor() {
 
+    constructor() {
 
         //!! --- Image position & size ---
         this.position = {
@@ -26,6 +26,7 @@ class Bird {
 
         this.acceleration = 0.2;
 
+
         //!! --- Bird Image togglling ---
         this.image_index = 0;
         this.images = [
@@ -37,6 +38,9 @@ class Bird {
         this.image = new Image();
         this.image.src = this.images[this.image_index];
 
+
+        //!! ---Load the music --
+        this.background_music = new Audio("../../Session9/sounds/qubodup-cfork-ccby3-jump.ogg");
     }
 
 
@@ -44,6 +48,12 @@ class Bird {
     change_images() {
         this.image_index = (this.image_index + 1) % this.images.length;
         this.image.src = this.images[this.image_index];
+    }
+
+    //!! --- method for making sound on bounce ---
+    bounce_sound() {
+        this.background_music.play();
+        this.background_music.volume = 0.2;
     }
 
 
@@ -66,14 +76,13 @@ class Bird {
         if (this.position.y + this.size.width >= canvas.height) {
             this.position.y = canvas.height - this.size.width;
             this.isDead = true;
-
         }
+
 
         //!! --- this ensure bird does not go above the screen ---
         if (this.position.y + this.size.width <= 50) {
             this.position.y = this.size.width;
             // this.isDead = true;
-
         }
     }
 
@@ -87,16 +96,13 @@ class Bird {
     //!! --- droping bird from top to bottom ---
     move() {
         this.velocity.y += this.acceleration;
-
         this.position.y += this.velocity.y;
-
     }
 
 
     //!! --- Calling above methods ---
     update() {
         this.draw();
-
         //!! --- move if bird is not dead ---
         //!! --- "!" exclamation mark checks if the isDead is false or not similar to this.isDead === false
         if (!this.isDead) {
