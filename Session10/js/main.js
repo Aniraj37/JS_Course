@@ -8,6 +8,7 @@ const bird = new Bird();
 const bg = new Background(0, 0);
 const bg2 = new Background(bg.size.width, 0);
 const score = new Score();
+const pipe = new Pipe();
 
 
 //!! --- tracking game score ---
@@ -24,8 +25,11 @@ function animate() {
     bg2.update(bird.isDead);
     console.log(bird.isDead);
 
+    //!! pipe ---
+    pipe.update();
 
-    console.log("Working");
+
+    // console.log("Working");
     bird.update();
 
 
@@ -46,7 +50,7 @@ function animate() {
 document.addEventListener("keydown", (event) => {
 
     if (event.code === "Space") {
-        console.log("jump");
+        // console.log("jump");
         bird.jump();
 
 
