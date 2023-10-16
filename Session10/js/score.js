@@ -30,18 +30,21 @@ class Score {
     }
 
 
+    final_score() {
+        c.fillStyle = "white";
+        c.font = "2.2rem sans-serif";
+        c.fillText("Game Over", this.position.x, this.position.y);
+        c.font = "1.4rem sans-serif";
+        c.fillText("Score: " + this.game_score, this.position.x + 45, this.position.y + 40);
+    }
+
+
 
     //!! --- Method that pauses the score count and displays final score and collision occurs ---
-    clear_interval() {
+    game_over() {
         if (bird.isDead) {
             clearInterval(this.interval_id);
-
-            c.fillStyle = "white";
-            c.font = "2.2rem sans-serif";
-            c.fillText("Game Over", this.position.x, this.position.y);
-            c.font = "1.4rem sans-serif";
-            c.fillText("Score: " + this.game_score, this.position.x + 45, this.position.y + 40);
-
+            this.final_score();
         }
 
     }

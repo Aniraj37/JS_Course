@@ -38,7 +38,7 @@ function animate() {
 
 
     //!! --- stop the score counting if bird is dead and display gamee over ---
-    score.clear_interval();
+    score.game_over();
 
 
 
