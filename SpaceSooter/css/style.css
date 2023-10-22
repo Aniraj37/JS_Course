@@ -1,0 +1,22 @@
+:root {
+  --white-shade: azure;
+  --blue-shade-color: #5272f2;
+}
+
+body {
+  background-color: #45474b;
+  background-image: url("../image/backgroundSpace_.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+#canvas {
+  position: absolute;
+  top: 100px;
+  background-color: transparent;
+  border: 2px solid var(--white-shade);
+  box-shadow: 0 0 15px 5px var(--blue-shade-color);
+  border-radius: 0.3rem;
+}
